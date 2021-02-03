@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Flower Hunter</string>
+    <string name="title_activity_maps">Map</string>
+
+    <string name="report_submission">Create a New Report</string>
+    <string name="title_report">Report Title</string>
+    <string name="tags_report">Report Tags</string>
+    <string name="des_report">Report Description</string>
+
+
+    <string name="themeHint">Choose the theme</string>
+    <string name="themetype">Choose the theme</string>
+    <string name="location">Provide the location</string>
+
+    <string name="sendbutton">OK</string>
+    <string name="cancelbutton">Clear Changes</string>
+    <string name="showbutton">SHOW REPORT IMAGE</string>
+    <string name="take_a_picture">Take a picture</string>
+    <string name="theme_name">Theme Name</string>
+    <string name="theme_description">Theme Description</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="search">Search</string>
+    <string name="email">Email</string>
+    <string name="search_for_reports">search for reports...</string>
+    <string name="select_theme">Select Theme</string>
+    <string name="ViewDirectionbutton">View Direction</string>
+</resources>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>register</title>
+</head>
+<body>
+
+<h2>Create User</h2>
+</div>
+
+<form method="POST">
+    {{ cform.hidden_tag() }}
+    <fieldset>
+        {{cform.username.label}}<br>
+        {{cform.username}}<br>
+        {{cform.email.label}}<br>
+        {{cform.email}}<br>
+        {{cform.password.label}}<br>
+        {{cform.password}}<br><br>
+        {{cform.create}}
+    </fieldset>
+</form>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<title>Create Report</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
+<script src="{{ url_for('static', filename='main.js') }}"></script>
+
+
+<body>
+<!-- Simple page header -->
+<div class="w3-top">
+  <div class="w3-white w3-xxxlarge" style="max-width:1200px;margin:auto">
+    <div class="w3-center w3-padding-16">Flower Hunter</div>
+  </div>
+</div>
+  
+<!-- Links between pages -->
+<!--Update all below Google links to links between the different pages on our site -->
+<div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:100px">
+  <div class="w3-row">
+    <div class="w3-col w3-container w3-white" style="width:20%"><p></p></div>
+    <div class="w3-col w3-container w3-white w3-center" style="width:6%">
+      <a href="/Home">Home</a>
+    </div>
+    {% if session['user'] %}
+    <div class="w3-col w3-container w3-white w3-center" style="width:12%">
+      <a href="/CreateTheme">Create Theme</a>
+    </div>
+    <div class="w3-col w3-container w3-white w3-center" style="width:12%">
+      <a href="/CreateReport">Create Report</a>
+    </div>
+      {% endif %}
+    <div class="w3-col w3-container w3-white w3-center" style="width:12%">
+      <a href="/ViewThemes">View Themes</a>
+    </div>
+    <div class="w3-col w3-container w3-white w3-center" style="width:12%">
+        {% if session['user'] %}
+        <a href="/Manage">{{ session['user']['username'] }}</a>
+        {% else %}
+        <a href="/Login">Login</a>
+        {% endif %}
+    </div>
+        {% if session['user'] %}
+    <div class="w3-col w3-container w3-white w3-center" style="width:6%">
+      <a href="/Logout">Logout</a>
+    </div>
+        {% endif %}
+    <div class="w3-col w3-container w3-white" style="width:20%"><p></p></div>
+  </div>
+</div>
+
+<!-- Information bar -->
+<div class="w3-container w3-margin-top w3-margin-bottom w3-border-bottom">
+  <div class="w3-col w3-left w3-container"><h2>Create a New Report</h2></div>
+</div>
+
+<form class="w3-container w3-card-4"method="POST" action="/SubmitReport">
+<br>
+<p>
+	<label class="w3-text-grey">Theme</label>
+	<select id="mySelect" class="w3-select w3-border w3-text-grey" name="option">
+    <option value="" disabled selected>Select Theme</option>
+    {% for theme in themes %}
+    <option value={{theme['title']}}>{{theme['title']}}</option>
+    {% endfor %}
+  </select>
+</p>
+<p>      
+  <label class="w3-text-grey">Report Title</label>
+  <input class="w3-input w3-border" type="text" name="report_name" required>
+</p>
+<p>
+  <label class="w3-text-grey">Report Tags</label>
+  <input class="w3-input w3-border" type="text" name="report_tags" required>
+</p>
+<p>      
+  <label class="w3-text-grey">Report Description</label>
+  <textarea class="w3-input w3-border" style="resize:none" name = report_description required></textarea>
+</p>
+
+<div class="w3-row-padding w3-margin-bottom">
+  <div class="w3-third w3-center">
+    <button onclick="showPicture()" type="button" class="w3-btn w3-padding w3-gray" style="width:190px"> show report Image</button>
+    &nbsp; &nbsp; &nbsp; &nbsp;
+    <img id="bigpic" src="bigpic" style="width:200px;height:200px;display:none;" />
+    <script>
+        function showPicture() {
+          var id = document.getElementById("mySelect").selectedIndex;
+          var img =  document.getElementById("bigpic");
+          var theme_title = document.getElementById("mySelect").options[id].text;
+          console.log(theme_title);
+          var pic = "/" + theme_title;
+          document.getElementById('bigpic').src = pic;
+          img.style.display = "block";
+        }
+    </script>
+  </div>
+  <div class="w3-third w3-center">
+    <label class="w3-text-white"> esc</label>
+  </div>
+  <div class="w3-third w3-center">
+    <a href="/Home"><button type="button" class="w3-btn w3-padding w3-red" style="width:100px"> Cancel</button></a>
+    <button type="submit" class="w3-btn w3-padding w3-teal" style="width:100px" onclick=confirm_report()> Submit </button>
+  </div>
+</div>
+
+</body>
+</html>
