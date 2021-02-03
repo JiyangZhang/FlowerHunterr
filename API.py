@@ -9,7 +9,7 @@ from bson.json_util import dumps
 API methods to create, store, and retrieve content from our MongoDB database
 """
 # Set up a connection to our MongoDB Atlas Cluster.
-client = MongoClient('mongodb+srv://Team11APT:Team11APT@cluster0-mzeqx.gcp.mongodb.net/test?retryWrites=true&w=majority',
+client = MongoClient('****',
                      ssl_cert_reqs=ssl.CERT_NONE)
 
 # Create a new collection in our database named pymongo_test.
